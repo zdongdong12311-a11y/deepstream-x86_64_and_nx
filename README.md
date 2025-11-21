@@ -19,4 +19,5 @@ mediamtx: https://github.com/bluenviron/mediamtx/releases
 mediamtx作为一个ffmpeg的服务端，可以将视频流发送到mediamtx服务器上，再在其他地方进行推流输出结果。
 ffmpeg下载：直接在终端输入sudo apt install ffmpeg即可。
 使用：看情况修改mediamtx的yaml配置文件，再运行meidamtx，打开另一个终端进行ffmpeg推流，示例：ffmpeg -f dshow -rtbufsize 1024M -i video="USB2.0 HD UVC WebCam" -c:v libx264 -preset ultrafast -tune zerolatency -f rtsp rtsp://localhost:8554/camerastream
-正常情况下视频流会成功传到服务其中，我们可以进行调用，调用需要修改localhost主机IP（在配置文件里）该文件里的配置即版本图片仅供参考。
+正常情况下视频流会成功传到服务器中，我们可以进行调用，先测试视频流是否可调用，测试调用示例:ffplay rtsp://localhost:8554/camerastream.
+如果成功再进行deepstream调用，调用需要修改localhost主机IP（在配置文件里）该文件里的配置即版本图片仅供参考。
