@@ -1,1 +1,3 @@
-
+基于deepstream—yolo—master,请先下载deepstream-yolo-master
+pt转onnx用里面官方的工具
+onnx转engine用tensorrt
