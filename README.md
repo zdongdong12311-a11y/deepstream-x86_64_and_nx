@@ -23,5 +23,9 @@ ffmpeg下载：直接在终端输入sudo apt install ffmpeg即可。
 正常情况下视频流会成功传到服务器中，我们可以进行调用，先测试视频流是否可调用，测试调用示例:ffplay rtsp://localhost:8554/camerastream.
 如果成功再进行deepstream调用，调用需要修改localhost主机IP（在配置文件里）该文件里的配置即版本图片仅供参考。
 
-Gstreamer_python:
+Gstreamer_python:Gstreamer作为一种强大的跨平台多媒体框架，支持各种音视频格式的处理，包括图片，视频，视频流等。deepstream依赖gstreamer的插件处理这些音视频文件，因此可直接使用gstreamer访问deepstream的内部元素以及处理库。
 
+下面我为大家说明一下提取deepstream元元素的两种方式:1.通过deepstream-python绑定(需要编译运行setup，处理较为复杂)，python绑定之后可以通过python语言间接访问deepstream底层的c/c++结构，并提取出deepstream处理之后的元元素，详情请参考https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_Quickstart.html
+2.通过gstreamer插件直接访问deepstream的内部元素(前面我已经提到过deepstream是基于gstreamer的多媒体处理框架，那么使用gstreamer访问deepstream也不容置疑)，那么还有一个问题--deepstream处理之后元元素的提取。这里我们可以使用探针来获取，方便快捷。这个方法相对于前者来说学习成本较高，需要使用者熟悉gstreamer的插件的使用和结果的格式转化，而对于ai流行的现代来说问题应该不大，优点是不需要python绑定即可使用deepstream，且性能较高。详情请参考我们提供的deepstream-yolo-master里的python文件。
+
+此外，不同架构使用deepstream-yolo差异不大，只需简单修改代码即可。关于deepstream-yolo的详细用法请参考https://github.com/marcoslucianops/DeepStream-Yolo
